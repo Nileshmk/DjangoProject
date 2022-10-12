@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>upload<h1>
+<table border = "1">
+    {% for singleData in data %}
+        <tr>
+            <td>{{singleData}}<td>
+        <tr>
+    {% endfor%}
+</table>
+<form>
+    <input id="fileSelect" type="file" accept=".csv" /><br>
+    <input id = "fileName" type="Text">
+    <input type = "submit">
+</form>
+{% endblock %}

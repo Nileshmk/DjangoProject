@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>display<h1>
+<form>
+    <select name="dataFile" id="dataFile">
+        {% for singleData in data %}
+            <option value={{singleData}}>{{singleData}}</option>
+        {% endfor%}
+    </select>
+    <input type="text">
+    <select name="dataFile" id="dataFile">
+        {% for function in functionNames %}
+            <option value={{function}}>{{function}}</option>
+        {% endfor%}
+    </select>
+    <input type="submit" value="Compute"/> 
+</form>
+<div id = "computeOutput">
+    <p>None</p>
+</div>
+<form>
+    <select name="dataFile" id="dataFile">
+        {% for singleData in data %}
+            <option value={{singleData}}>{{singleData}}</option>
+        {% endfor%}
+    </select>
+    <input type="text">
+    <input type="text">
+    <input type="submit" value="Plot"/> 
+</form>
+{% autoescape off %}
+{{ plot_div }}
+{%  endautoescape %}
+{% endblock %}

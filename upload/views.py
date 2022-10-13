@@ -1,13 +1,15 @@
 from django.shortcuts import render
-
+from dataset.forms import upload as up
+import os
 # Create your views here.
-files = [
-    "Data file 01",
-    "Data file 02",
-    "Data file 03",
-    "Data file 04",
-    "Data file 05",
-]
+def getFilesNames():
+    filesNames = []
+    for file in os.listdir(".\static"):
+        if file.endswith(".csv"):
+            filesNames.append(file)
+    return filesNames
+
 def upload(request):
-    context = {"data": files}
+    form = up()
+    context = {"data": getFilesNames(),'form':form}
     return render(request, 'upload.html',context)

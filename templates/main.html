@@ -7,6 +7,13 @@
     <title>smallapp</title>
 </head>
 <body>
+    {% block nav %}
+        <ul id="nav">
+            <li>{% block nav-upload %}<a href="/upload">Upload</a>{% endblock %}</li>
+            <li>{% block nav-display %}<a href="/display">Display</a>{% endblock %}</li>
+        </ul>
+    {% endblock %}
+
     {% block content %}
     {% endblock %}
 </body>

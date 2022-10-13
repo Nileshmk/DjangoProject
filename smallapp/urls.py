@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('upload/', include('upload.urls')),
     path('display/', include('display.urls')),
-    
+    path('dataset/', include('dataset.urls')),
 ]

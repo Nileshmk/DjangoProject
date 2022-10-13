@@ -1,4 +1,5 @@
 {% extends 'main.html' %}
+{% block nav-upload %}<strong class="nav-active">Upload</strong>{% endblock %}
 {% block content %}
 <h1>upload<h1>
 <table border = "1">
@@ -8,9 +9,13 @@
         <tr>
     {% endfor%}
 </table>
-<form>
-    <input id="fileSelect" type="file" accept=".csv" /><br>
+<form method="POST" enctype="multipart/form-data" action="http://127.0.0.1:8000/dataset/">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">Save</button>
+    <!-- <input id="fileSelect" type="file" accept=".csv" /><br>
     <input id = "fileName" type="Text">
-    <input type = "submit">
+    <input type = "submit"> -->
+
 </form>
 {% endblock %}

@@ -9,13 +9,21 @@
         <tr>
     {% endfor%}
 </table>
-<form method="POST" enctype="multipart/form-data" action="http://127.0.0.1:8000/dataset/">
+<form id = "my-form" enctype="multipart/form-data">
     {%csrf_token%}
     {{form.as_p}}
-    <button type="submit">Save</button>
+    <button id = "submit-button">Save</button>
     <!-- <input id="fileSelect" type="file" accept=".csv" /><br>
     <input id = "fileName" type="Text">
     <input type = "submit"> -->
 
 </form>
+<script>
+    document.getElementById("submit-button").addEventListener('click',function() {
+        console.log('requested');
+        $.post("http://127.0.0.1:8000/dataset/", $("#my-form").serialize())
+            .done(function() { window.alert("Successfully submitted!"); })
+            .fail(function() { window.alert("Submission failed!"); });
+    });
+</script>
 {% endblock %}

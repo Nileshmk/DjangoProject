@@ -2,21 +2,16 @@ from django.shortcuts import render
 import pandas as pd
 from plotly.offline import plot
 import plotly.express as px
+
+from upload.views import getFilesNames
 # Create your views here.
-files = [
-    "Data file 01",
-    "Data file 02",
-    "Data file 03",
-    "Data file 04",
-    "Data file 05",
-]
 functionNames = [
     "MAX",
     "MIN",
     "SUM"
 ]
 def display(request):
-    context = {"data":files,"functionNames":functionNames}
+    context = {"data":getFilesNames(),"functionNames":functionNames}
     df = pd.read_csv('static\california_housing_test.csv')
     fig = px.bar(
         x=df["longitude"], y=df["latitude"]
